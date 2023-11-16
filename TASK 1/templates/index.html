@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'popins', sans-serif;
+        }
+        #container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+        }
+        button {
+            
+                display: inline-block;
+                padding: 12px 28px;
+                background: #0ef;
+                border-radius: 40px;
+                font-size: 16px;
+                color: #290820;
+                letter-spacing: 1px;
+                text-decoration: none;
+                font-weight: 600;
+            
+            
+            
+        }
+        button:hover {
+            box-shadow: 0 0 5px cyan,
+        0 0 25px cyan, 0 0 50px cyan,
+        0 0 100px cyan, 0 0 200px cyan
+        }
+        .short-url {
+            display: inline-block;
+                padding: 12px 28px;
+                background: #0ef;
+                border-radius: 40px;
+                font-size: 16px;
+                letter-spacing: 1px;
+                text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        .error {
+            color: #0ef;
+            margin-top: 10px;
+        }
+        .made-by {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>URL Shortener</h1>
+        <form action="/shorten" method="post">
+            <input type="url" name="url" placeholder="Enter URL" required>
+            <button type="submit">Shorten</button>
+        </form>
+        {% if short_url %}
+            <p class="short-url">Shortened URL: <a href="{{ short_url }}" target="_blank">{{ short_url }}</a></p>
+        {% endif %}
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+     <div class="made-by">
+        <p>Made by Anik Biswas</p>
+    </div>
+</body>
+</html>
